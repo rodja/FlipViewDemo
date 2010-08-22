@@ -40,17 +40,19 @@ public class ViewSwitcher {
 		mDuration = duration;
 	}
 
-	/**
-	 * Setup a new 3D rotation on the container view.
-	 * 
-	 * @param position
-	 *            the item that was clicked to show a picture, or -1 to show the list
-	 * @param start
-	 *            the start angle at which the rotation must begin
-	 * @param end
-	 *            the end angle of the rotation
-	 */
-	private void turnAround(float start, float end) {
+	public void swap() {
+		float start, end;
+
+		if (isFrontsideVisible()) {
+			Log.v(TAG, "turning to the backside!");
+			start = 0;
+			end = 90;
+		} else {
+			Log.v(TAG, "turning to the frontside!");
+			start = 180;
+			end = 90;
+		}
+
 		Rotate3dAnimation rotation = new Rotate3dAnimation(start, end,
 				mContainer.getWidth() / 2.0f, mContainer.getHeight() / 2.0f, mDepthOfRotation, true);
 		rotation.setDuration(mDuration / 2);
@@ -59,16 +61,6 @@ public class ViewSwitcher {
 		rotation.setAnimationListener(new TurnAroundListener());
 
 		mContainer.startAnimation(rotation);
-	}
-
-	public void swap() {
-		if (isFrontsideVisible()) {
-			Log.v(TAG, "turning to backside!");
-			turnAround(0, 90);
-		} else {
-			Log.v(TAG, "turning to frontside!");
-			turnAround(180, 90);
-		}
 	}
 
 	public boolean isFrontsideVisible() {
@@ -80,8 +72,8 @@ public class ViewSwitcher {
 	}
 
 	/**
-	 * Listen for the end of the first half of the animation. Then post a new action
-	 * that effectively swaps the views when the container is rotated 90 degrees and thus invisible.
+	 * Listen for the end of the first half of the animation. Then post a new action that
+	 * effectively swaps the views when the container is rotated 90 degrees and thus invisible.
 	 */
 	private final class TurnAroundListener implements Animation.AnimationListener {
 
@@ -108,8 +100,8 @@ public class ViewSwitcher {
 
 			if (isFrontsideVisible()) {
 				mFrondside.setVisibility(View.GONE);
-				unmirrorTheBackside();
 				mBackside.setVisibility(View.VISIBLE);
+				unmirrorTheBackside();
 				mBackside.requestFocus();
 
 				rotation = new Rotate3dAnimation(90, 180, centerX, centerY, mDepthOfRotation, false);
@@ -118,7 +110,6 @@ public class ViewSwitcher {
 				mBackside.clearAnimation(); // remove the mirroring
 				mFrondside.setVisibility(View.VISIBLE);
 				mFrondside.requestFocus();
-				
 
 				rotation = new Rotate3dAnimation(90, 0, centerX, centerY, mDepthOfRotation, false);
 			}
