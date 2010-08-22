@@ -23,7 +23,7 @@ public class DemoActivity extends Activity {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN){
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					viewSwitcher.swap();
 					return true;
 				}
