@@ -1,0 +1,15 @@
+This example generalizes (and fixes) the 3D flip animation 
+from the Android API Demos. Now it should work with any pair of 
+Views placed in a FrameLayout container. See this stripped example 
+to get the meaning:
+
+  <FrameLayout android:id="@+id/container">
+     <TextView android:text="@string/frontside"/>
+	   <TextView android:text="@string/backside" android:visibility="gone"/>
+  </FrameLayout>
+
+
+  viewSwitcher = new ViewSwitcher((ViewGroup) findViewById(R.id.container));
+
+  // flip
+  viewSwitcher.swap();
