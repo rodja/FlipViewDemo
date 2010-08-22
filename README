@@ -13,3 +13,7 @@ to get the meaning:
 
   // flip
   viewSwitcher.swap();
+
+
+Fetch your precompiled demo Android package from
+http://github.com/downloads/rodja/FlipViewDemo/FlipViewsDemo.apk
