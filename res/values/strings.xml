@@ -2,6 +2,19 @@
 <resources>
     <string name="app_name">FlipViewsDemo</string>
 
-    <string name="frontside">Frontside of DemoActivity!</string>
-    <string name="backside">Backside of DemoActivity!</string>
+    <string name="frontside"><b>Frontside</b>
+      
+      \n\nThis code snipped generalizes the 3D flip animation 
+      from the Android API Demos.
+      
+      \n\nTap somewhere on the screen.
+    </string>
+    <string name="backside"><b>Backside</b>
+      
+      \n\nThis effect should work with a pair of arbitrary Views 
+      placed in a FrameLayout container.
+      
+      \n\nThe source on http://github.com/rodja/FlipViewDemo hopefully requires 
+      only little modification to be used in other contexts.
+    </string>
 </resources>

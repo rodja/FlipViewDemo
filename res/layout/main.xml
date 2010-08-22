@@ -19,6 +19,7 @@
 		    android:layout_height="wrap_content" 
 		    android:text="@string/frontside"
 		    android:textSize="20sp"
+		    android:padding="10dip"
 		    />
 
         <!--  Backside is hidden -->		
@@ -27,6 +28,8 @@
 		    android:layout_height="wrap_content" 
 		    android:text="@string/backside"
 		    android:textSize="20sp"
+		    android:padding="10dip"
+		    android:autoLink="web"
 		    
 		    android:visibility="gone"
 		    />
